@@ -28,7 +28,7 @@ DATA = '0'
 UDP_SOCKET = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Bind the UDP scoket to host and port
-UDP_SOCKET.bind(ADDR)
+UDP_SOCKET.bind(('', SRC_PORT))
 
 def main():
     
