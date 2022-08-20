@@ -11,8 +11,8 @@ args = parser.parse_args()
 
 STUDENT_ID = args.i
 HOST = args.a
-SRC_PORT = args.c
-DST_PORT = args.s
+SRC_PORT = int(args.c)
+DST_PORT = int(args.s)
 ADDR = (HOST, int(SRC_PORT))
 ADDR2 = (HOST, int(DST_PORT))
 
