@@ -13,8 +13,8 @@ STUDENT_ID = args.i
 HOST = args.a
 SRC_PORT = args.c
 DST_PORT = args.s
-ADDR = (HOST, SRC_PORT)
-ADDR2 = (HOST, DST_PORT)
+ADDR = (HOST, int(SRC_PORT))
+ADDR2 = (HOST, int(DST_PORT))
 
 TRANSACTION_ID = '12345678' # check if pwede lagyan ng value
 TYPE = '8'
