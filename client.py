@@ -26,16 +26,13 @@ DATA = '0'
 # Initiate UDP connection
 UDP_SOCKET = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-# Bind the UDP scoket to host and port
+# Bind the UDP socket to host and port
 UDP_SOCKET.bind(('', SRC_PORT))
 
-def main():
-    
-    # Send an Initiate Packet
-    UDP_SOCKET.sendto(f'{STUDENT_ID}{TRANSACTION_ID}{TYPE}{PULL_BYTE}{PULL_SIZE}{UIN}{UIN_ANS}/{DATA}'.encode(), ADDR)
-    data, addr = UDP_SOCKET.recvfrom(1024)
-    transaction = data.decode()
-    print(transaction)
+# Send an Initiate Packet
+UDP_SOCKET.sendto(f'{STUDENT_ID}{TRANSACTION_ID}{TYPE}{PULL_BYTE}{PULL_SIZE}{UIN}{UIN_ANS}/{DATA}'.encode(), ADDR)
 
-if __name__ == "__main__":
-    main()
+# Receive Accept Packet
+data, addr = UDP_SOCKET.recvfrom(1024)
+transaction = data.decode()
+print(transaction)
