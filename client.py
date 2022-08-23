@@ -1,23 +1,22 @@
 import socket
 import argparse
 
-# Initialize Variables
+# Parse Arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-a', default='10.0.5.69')
 parser.add_argument('-s', default=9000)
 parser.add_argument('-c', default=6671)
 parser.add_argument('-i', default='e3e22884')
 args = parser.parse_args()
-
 STUDENT_ID = args.i
 HOST = args.a
 SRC_PORT = int(args.c)
 DST_PORT = int(args.s)
-ADDR = (HOST, int(SRC_PORT))
-ADDR2 = (HOST, int(DST_PORT))
 
-TRANSACTION_ID = '12345678' # check if pwede lagyan ng value
-TYPE = '8'
+# Initialize Variables
+ADDR = (HOST, int(DST_PORT))
+TRANSACTION_ID = '12345678' 
+TYPE = int(0b1000)
 PULL_BYTE = '00000'
 PULL_SIZE = '00000'
 UIN = '0000000'
@@ -33,7 +32,7 @@ UDP_SOCKET.bind(('', SRC_PORT))
 def main():
     
     # Send an Initiate Packet
-    UDP_SOCKET.sendto(f'{STUDENT_ID}{TRANSACTION_ID}{TYPE}{PULL_BYTE}{PULL_SIZE}{UIN}{UIN_ANS}/{DATA}'.encode(), ADDR2)
+    UDP_SOCKET.sendto(f'{STUDENT_ID}{TRANSACTION_ID}{TYPE}{PULL_BYTE}{PULL_SIZE}{UIN}{UIN_ANS}/{DATA}'.encode(), ADDR)
     data, addr = UDP_SOCKET.recvfrom(1024)
     transaction = data.decode()
     print(transaction)
